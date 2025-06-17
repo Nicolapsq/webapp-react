@@ -1,0 +1,14 @@
+.detailsImg {
+  width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  .detailsImg {
+    width: 100%;
+  }
+}
+
+.ListPageImg {
+  width: 100%;
+  object-fit: contain;
+}
