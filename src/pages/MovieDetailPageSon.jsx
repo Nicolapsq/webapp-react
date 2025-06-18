@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 
+import Stars from "../components/Stars";
+
 export default function MovieListPageSon({ movie }) {
   return (
     <div className="container">
       <div className="my-4">
         <h2>{movie.title}</h2>
-        <img className="detailsImg" src={movie.image} alt={movie.title} />
+        <img
+        className="detailsImg"
+        src={movie.image}
+        alt={movie.title}
+        />
         <p>
           <strong>Regista:</strong> {movie.director}
         </p>
@@ -20,8 +26,10 @@ export default function MovieListPageSon({ movie }) {
         <ul>
           {movie.reviews.map((review) => (
             <li key={review.review_id}>
-              <strong>{review.review_name}:</strong> {review.comment} (
-              {review.vote}/5)
+              <strong>{review.review_name}:</strong> {review.comment}
+              <div>
+                <strong>voto:</strong> <Stars vote={review.vote} />
+              </div>
             </li>
           ))}
         </ul>

@@ -12,3 +12,12 @@
   width: 100%;
   object-fit: contain;
 }
+
+.spinner{
+  position: absolute;
+  inset: 0;
+  background-color: rgba(128, 128, 128, 0.493);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

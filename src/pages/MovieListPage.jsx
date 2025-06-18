@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+const backEndApiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
 export default function MovieListPage({ movies }) {
   return (
     <div className="row mt-4">
@@ -8,7 +10,7 @@ export default function MovieListPage({ movies }) {
           <div className="card h-100">
             <img
               className="card-img-top ListPageImg"
-              src={`http://localhost:3000/movies_cover/${movie.image}`}
+              src={`${backEndApiUrl}/movies_cover/${movie.image}`}
               alt={movie.title}
             />
             <div className="card-body d-flex flex-column">
