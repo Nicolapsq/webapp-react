@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom";
-
 import Stars from "../components/Stars";
+import ReviewForm from "../components/ReviewForm";
 
 export default function MovieListPageSon({ movie }) {
   return (
     <div className="container">
       <div className="my-4">
-        <h2>{movie.title}</h2>
-        <img
-        className="detailsImg"
-        src={movie.image}
-        alt={movie.title}
-        />
+        <h2>{movie.title} - {movie.id}</h2>
+        <img className="detailsImg" src={movie.image} alt={movie.title} />
         <p>
           <strong>Regista:</strong> {movie.director}
         </p>
@@ -33,6 +29,7 @@ export default function MovieListPageSon({ movie }) {
             </li>
           ))}
         </ul>
+        <ReviewForm movieId={movie.id}/>
 
         <Link to="/" className="btn btn-secondary mt-3">
           Torna ai film
