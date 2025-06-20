@@ -22,19 +22,29 @@ export default function ReviewForm({ movieId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // new Date()orario corrente;.toISOString()converte in ISO 8601;.slice()estrae i primi 19 elementi;.replace()sostituisce la "T" con " "
-    const now = new Date().toISOString().slice(0, 19).replace("T", " "); // compatibile con mySQL
+    // const now = new Date().toISOString().slice(0, 19).replace("T", " "); // compatibile con mySQL
     const backEndApiUrl = import.meta.env.VITE_BACKEND_API_URL;
 
-    const formDataWithtDate = {
-      ...formData,
-      created_at: now,
-      updated_at: now,
+    // const formDataWithtDate = {
+    //   ...formData,
+    //   created_at: now,
+    //   updated_at: now,
+    // };
+
+    const formDataComment = {
+      name: formData.name,
+      lastname: formData.lastname,
+      email: formData.email,
+      vote: formData.vote,
+      text: formData.text,
     };
 
     // Qui devo inviare i dati via axios
-    axios.post(`${backEndApiUrl}/movies/${movieId}`, formDataWithtDate).then((res) => {
-      console.log("Dati inviati:", res.data);
-    });
+    axios
+      .post(`${backEndApiUrl}/movies/${movieId}`, formDataComment)
+      .then((res) => {
+        console.log("Dati inviati:", res.data);
+      });
     // reset del form (stato di partenza)
     setFormData({
       name: "",
@@ -49,7 +59,7 @@ export default function ReviewForm({ movieId }) {
   return (
     <form onSubmit={handleSubmit} className="p-4 border rounded shadow row">
       <div className="mb-3 col-3">
-        <label>Name:</label>
+        <label>Nome:</label>
         <input
           type="text"
           name="name"
@@ -109,6 +119,7 @@ export default function ReviewForm({ movieId }) {
           onChange={handleChange}
           className="form-control"
           rows="3"
+          required
         />
       </div>
 
